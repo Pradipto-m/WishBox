@@ -3,11 +3,13 @@ package com.pradipto.wishbox.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
+import lombok.Data;
 import org.hibernate.annotations.Check;
 import org.hibernate.validator.constraints.URL;
 
 @Entity
 @Table(name = "products")
+@Data
 public class ProductEntity {
 
     @Id
@@ -31,61 +33,5 @@ public class ProductEntity {
     @NotNull(message = "Field cannot be empty")
     @URL(message = "Please enter a valid url")
     private String image;
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-
-    public String getSeller() {
-        return seller;
-    }
-
-    public void setSeller(String seller) {
-        this.seller = seller;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public String[] getCategory() {
-        return category;
-    }
-
-    public void setCategory(String[] category) {
-        this.category = category;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 
 }

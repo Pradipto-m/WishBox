@@ -9,14 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("api/users")
 public class UserController {
 
     @Autowired
-    UserService services;
+    private UserService services;
 
     @GetMapping("getUser")
     public ResponseEntity<?> getUser(@RequestParam Integer id){
