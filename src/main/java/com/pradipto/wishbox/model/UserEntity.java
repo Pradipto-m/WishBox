@@ -30,7 +30,6 @@ public class UserEntity {
     @NotNull(message = "Field cannot be empty")
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%\\-^&_+()]).{6,}$")
     private String password;
-    private String address;
     private String profile;
 
 }

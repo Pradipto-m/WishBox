@@ -1,7 +1,7 @@
 package com.pradipto.wishbox.controller;
 
 import com.pradipto.wishbox.model.ProductEntity;
-import com.pradipto.wishbox.service.ProductService;
+import com.pradipto.wishbox.service.ProductServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,7 +16,7 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    ProductService services;
+    ProductServiceImpl services;
 
     @GetMapping("getAll")
     public ResponseEntity<List<ProductEntity>> getAllProducts () {
@@ -32,6 +32,16 @@ public class ProductController {
             return new ResponseEntity<>("Binding result error: " + result.getAllErrors(), HttpStatus.BAD_REQUEST);
         }
         return services.addProduct(product);
+    }
+
+    @GetMapping("search/{query}")
+    public ResponseEntity<?> searchProduct (@PathVariable String query) {
+        return services.searchProduct(query);
+    }
+
+    @GetMapping("category/{cat}")
+    public ResponseEntity<?> productsByCategory (@PathVariable String cat) {
+        return services.productsByCategory(cat);
     }
 
 }

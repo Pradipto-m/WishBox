@@ -1,6 +1,8 @@
 package com.pradipto.wishbox.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMax;
+import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
@@ -33,5 +35,12 @@ public class ProductEntity {
     @NotNull(message = "Field cannot be empty")
     @URL(message = "Please enter a valid url")
     private String image;
+    @Column(nullable = false, columnDefinition = "numeric check (rating < 6 and rating >= 0)")
+    @DecimalMax("5.0")
+    @DecimalMin("0.0")
+    private Float rating;
+    @Column(nullable = false)
+    @NotNull
+    private Integer reviews;
 
 }
